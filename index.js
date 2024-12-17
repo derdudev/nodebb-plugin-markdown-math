@@ -64,7 +64,7 @@ const Markdown = {
 		hookData.links.push({
 			rel: 'prefetch stylesheet',
 			type: '',
-			href: `${nconf.get('relative_path')}/assets/plugins/nodebb-plugin-markdown/styles/${highlightTheme || 'default.css'}`,
+			href: `${nconf.get('relative_path')}/assets/plugins/nodebb-plugin-markdown-math/styles/${highlightTheme || 'default.css'}`,
 		}, {
 			rel: 'prefetch',
 			href: `${nconf.get('relative_path')}/assets/language/${meta.config.defaultLang || 'en-GB'}/markdown.json?${meta.config['cache-buster']}`,
@@ -114,7 +114,7 @@ const Markdown = {
 			_self.highlight = _self.config.highlight;
 			delete _self.config.highlight;
 
-			parser = new MarkdownIt(_self.config);
+			parser = new MarkdownIt(_self.config).use(require('markdown-it-texmath'), { engine: require('katex'), delimiters: 'dollars' }); // ADD USE PIPE HERE! https://community.nodebb.org/topic/14141/proper-way-to-add-latex-with-markdown-it-texmath-and-katex-to-nodebb-plugin-markdown
 
 			Markdown.updateParserRules(parser);
 		});

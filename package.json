@@ -1,7 +1,7 @@
 {
-  "name": "nodebb-plugin-markdown",
+  "name": "nodebb-plugin-markdown-math",
   "version": "12.2.8",
-  "description": "A Markdown parser for NodeBB",
+  "description": "A Markdown parser for NodeBB with KaTeX support",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
     "plugin",
     "markdown"
   ],
-  "author": "Julian Lam <julian@designcreateplay.com>",
+  "author": "Matteo Mertz <derdu.dev@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/julianlam/nodebb-plugin-markdown/issues"
@@ -31,9 +31,11 @@
   "dependencies": {
     "highlight.js": "11.4.0",
     "highlightjs-line-numbers.js": "^2.8.0",
+    "katex": "^0.16.17",
     "markdown-it": "^12.0.6",
     "markdown-it-checkbox": "^1.1.0",
-    "markdown-it-multimd-table": "^4.0.1"
+    "markdown-it-multimd-table": "^4.0.1",
+    "markdown-it-texmath": "^1.0.0"
   },
   "nbbpm": {
     "compatibility": "^3.0.0"
