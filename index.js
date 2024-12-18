@@ -119,7 +119,7 @@ const Markdown = {
 
 			console.log("[plugin/markdown-math]: ", _self.config);
 
-			parser = new MarkdownIt(_self.config).use(TexMath, { delimiters: 'dollars' }); // ADD USE PIPE HERE! https://community.nodebb.org/topic/14141/proper-way-to-add-latex-with-markdown-it-texmath-and-katex-to-nodebb-plugin-markdown
+			parser = new MarkdownIt(_self.config); // ADD USE PIPE HERE! https://community.nodebb.org/topic/14141/proper-way-to-add-latex-with-markdown-it-texmath-and-katex-to-nodebb-plugin-markdown
 
 			Markdown.updateParserRules(parser);
 		});
@@ -246,6 +246,9 @@ const Markdown = {
 	},
 
 	updateParserRules: function (parser) {
+			// math rendering
+		parser.use(TexMath, { delimiters: 'dollars' });
+
 		if (Markdown.config.checkboxes) {
 			// Add support for checkboxes
 			parser.use(require('markdown-it-checkbox'), {
