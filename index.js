@@ -115,6 +115,7 @@ const Markdown = {
 			delete _self.config.highlight;
 
 			_self.config.html = true;
+				winston.warn(`[plugin/markdown] Current config ${_self.config}`);
 
 			parser = new MarkdownIt(_self.config).use(require('markdown-it-texmath'), { engine: require('katex'), delimiters: 'dollars' }); // ADD USE PIPE HERE! https://community.nodebb.org/topic/14141/proper-way-to-add-latex-with-markdown-it-texmath-and-katex-to-nodebb-plugin-markdown
 
