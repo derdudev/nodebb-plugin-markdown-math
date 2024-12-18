@@ -1,10 +1,11 @@
 'use strict';
 
 const MarkdownIt = require('markdown-it');
-const TexMath = require('markdown-it-texmath');
 const KaTeX = require('katex');
+const TexMath = require('markdown-it-texmath').use(Katex);
 const fs = require('fs');
 const path = require('path');
+const Katex = require('katex/katex');
 
 const nconf = require.main.require('nconf');
 const winston = require.main.require('winston');
@@ -116,10 +117,9 @@ const Markdown = {
 			_self.highlight = _self.config.highlight;
 			delete _self.config.highlight;
 
-			_self.config.html = true;
-				winston.warn(`[plugin/markdown] Current config ${_self.config}`);
+			console.log("[plugin/markdown-math]: ", _self.config);
 
-			parser = new MarkdownIt(_self.config).use(TexMath, { engine: KaTeX, delimiters: 'dollars' }); // ADD USE PIPE HERE! https://community.nodebb.org/topic/14141/proper-way-to-add-latex-with-markdown-it-texmath-and-katex-to-nodebb-plugin-markdown
+			parser = new MarkdownIt(_self.config).use(TexMath, { delimiters: 'dollars' }); // ADD USE PIPE HERE! https://community.nodebb.org/topic/14141/proper-way-to-add-latex-with-markdown-it-texmath-and-katex-to-nodebb-plugin-markdown
 
 			Markdown.updateParserRules(parser);
 		});
