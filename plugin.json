@@ -1,5 +1,5 @@
 {
-    "id": "nodebb-plugin-markdown-math",
+    "id": "nodebb-plugin-markdown",
     "name": "Markdown-Math Parser",
     "description": "A Markdown parser for NodeBB with math support",
     "url": "https://github.com/julianlam/nodebb-plugin-markdown",

@@ -2,7 +2,7 @@
 
 const MarkdownIt = require('markdown-it');
 const KaTeX = require('katex');
-const TexMath = require('markdown-it-texmath').use(Katex);
+const TexMath = require('markdown-it-texmath').use(KaTeX);
 const fs = require('fs');
 const path = require('path');
 const Katex = require('katex/katex');
