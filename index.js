@@ -1,6 +1,8 @@
 'use strict';
 
 const MarkdownIt = require('markdown-it');
+const TexMath = require('markdown-it-texmath');
+const KaTeX = require('katex');
 const fs = require('fs');
 const path = require('path');
 
@@ -117,7 +119,7 @@ const Markdown = {
 			_self.config.html = true;
 				winston.warn(`[plugin/markdown] Current config ${_self.config}`);
 
-			parser = new MarkdownIt(_self.config).use(require('markdown-it-texmath'), { engine: require('katex'), delimiters: 'dollars' }); // ADD USE PIPE HERE! https://community.nodebb.org/topic/14141/proper-way-to-add-latex-with-markdown-it-texmath-and-katex-to-nodebb-plugin-markdown
+			parser = new MarkdownIt(_self.config).use(TexMath, { engine: KaTeX, delimiters: 'dollars' }); // ADD USE PIPE HERE! https://community.nodebb.org/topic/14141/proper-way-to-add-latex-with-markdown-it-texmath-and-katex-to-nodebb-plugin-markdown
 
 			Markdown.updateParserRules(parser);
 		});
@@ -234,6 +236,7 @@ const Markdown = {
 
 	updateSanitizeConfig: async (config) => {
 		config.allowedTags.push('input');
+		config.allowedTags.push('svg');
 		config.allowedAttributes.input = ['type', 'checked'];
 		config.allowedAttributes.ol.push('start');
 		config.allowedAttributes.th.push('colspan', 'rowspan');
